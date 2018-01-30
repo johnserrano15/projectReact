@@ -9,7 +9,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 */
 module.exports = {
   entry: {
-    home: path.resolve(__dirname, 'src/index.js')
+    home: path.resolve(__dirname, 'src/index.jsx')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -38,6 +38,48 @@ module.exports = {
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         }),
+      },
+      {
+        test: /\.(jp?g|png|gif|svg)$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              publicPath: '', // Recordar que se puede agregar la ruta donde van a estar las images
+              outputPath: 'images/'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              gifsicle: {
+                interlaced: false,
+              },
+              optipng: {
+                optimizationLevel: 7,
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              svgo: {
+                progressive: true,
+                quality: 65
+              },
+              // Specifying webp here will create a WEBP version of your JPG/PNG images
+              // se comento por errores 
+              // webp: {
+              //   quality: 75
+              // }
+            }
+          }
+        ]
       }
     ]
   },
