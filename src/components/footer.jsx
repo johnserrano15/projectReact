@@ -4,11 +4,11 @@ import logo from '../img/iconos/logoFooter.svg';
 class Footer extends Component {
   render() {
     return (
-      <Footer />
+      <footer>
+        <h3>Hola soy footer</h3>
+      </footer>
     )
   }
 }
-
-console.log('Hola soy footer')
 
 export default Footer;

@@ -1,16 +1,22 @@
 'use strict'
-
-const express = require('express');
-const hbs = require('express-handlebars');
+// Example -> https://github.com/babel/example-node-server
+import express from 'express';
+import path from 'path';
+import engine from 'react-engine';
 const app = express();
 require('dotenv').config();
 
-app.engine('.hbs', hbs({
-  defaultLayout: 'default',
-  extname: '.hbs'
-}));
-
-app.set('view engine', '.hbs');
+/* Mas info de la config https://medium.com/@sergiodxa/renderizando-react-js-en-el-server-con-express-js-y-react-engine-903de08c3df6 
+  CON REACT-ROUTER
+*/
+// definimos el engine para archivos jsx
+app.engine('.jsx', engine.server.create());
+// configuramos la ruta a las vistas
+app.set('views', path.resolve(__dirname, 'views'));
+// indicamos que el engine a usar es el de archivos jsx
+app.set('view engine', 'jsx');
+// le indicamos que use react-engine como engine de nuestras vistas
+app.set('view', engine.expressView);
 
 app.use(express.static('dist'));// Files css, js etc
 

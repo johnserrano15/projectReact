@@ -18359,8 +18359,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-console.log('Hola soy header');
-
 var Header = function (_Component) {
   _inherits(Header, _Component);
 
@@ -18372,11 +18370,16 @@ var Header = function (_Component) {
 
   _createClass(Header, [{
     key: 'render',
-
-
-    // Tener en cuenta el estado "state" no se debe modificar nunca en este punto del render.
     value: function render() {
-      return _react2.default.createElement(Header, null);
+      return _react2.default.createElement(
+        'header',
+        null,
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Hola soy header'
+        )
+      );
     }
   }]);
 
@@ -18432,14 +18435,20 @@ var Footer = function (_Component) {
   _createClass(Footer, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(Footer, null);
+      return _react2.default.createElement(
+        'footer',
+        null,
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Hola soy footer'
+        )
+      );
     }
   }]);
 
   return Footer;
 }(_react.Component);
-
-console.log('Hola soy footer');
 
 exports.default = Footer;
 

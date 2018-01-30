@@ -1,3 +1,6 @@
-# Site ADS OP
+# Config project with React
 
-- Tipo de pautas para la opinión
+* Webpack
+* React in the client
+* React in the server
+* Styles with sass
